@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { BodyComponent } from './body/body.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 
 interface SideNavToggle {
   screenWidth: number;
