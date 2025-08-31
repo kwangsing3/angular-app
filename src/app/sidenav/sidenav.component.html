@@ -1,1 +1,37 @@
-<p>sidenav works!</p>
+<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed' : ''">
+  <div class="logo-container">
+    <button class="logo" (click)="toggleCollapse()">A</button>
+    @if (collapsed) {
+    <div class="logo-text" @fadeInOut>{{ title }}</div>
+    <button class="btn-close" @rotate (click)="closeSidenav()" title="Close">
+      <i class="fal fa-times close-icon"></i>
+    </button>
+    <footer class="sidenav-footer" @fadeInOut>
+      <ul>
+        <li>version</li>
+        <li>127.0.0.1</li>
+        <li><fa-icon [icon]="Copyright"></fa-icon> 2025 My Company</li>
+      </ul>
+    </footer>
+    }
+  </div>
+  <ul class="sidenav-nav">
+    @for (item of navData; track $index) {
+    <li class="sidenav-nav-item">
+      <a
+        class="sidenav-nav-link"
+        [routerLink]="[item.routeLink]"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <fa-icon class="sidenav-link-icon" [icon]="item.icon"></fa-icon>
+        @if (collapsed) {
+        <span class="sidenav-link-text" @fadeInOut>
+          {{ item.label }}
+        </span>
+        }
+      </a>
+    </li>
+    }
+  </ul>
+</div>
